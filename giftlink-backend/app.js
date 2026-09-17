@@ -21,6 +21,7 @@ connectToDatabase().then(() => {
 app.use(express.json());
 
 // Route files
+const authRoutes = require('./routes/authRoutes');
 const giftRoutes = require('./routes/giftRoutes');
 const searchRoutes = require('./routes/searchRoutes');
 
@@ -31,6 +32,7 @@ const logger = require('./logger');
 app.use(pinoHttp({ logger }));
 
 // Use Routes
+app.use('/api/auth', authRoutes);
 app.use('/api/gifts', giftRoutes);
 app.use('/api/search', searchRoutes);
 
